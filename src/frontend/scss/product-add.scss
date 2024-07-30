@@ -1,0 +1,146 @@
+// Utility Import
+
+@use "utilities";
+
+/* Styling Reset For Whole Site */
+
+:root {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* More Resetting For The Body */
+
+body {
+  height: utilities.$content-height;
+  width: 80%;
+  margin: auto;
+}
+
+/* Header And Save/Cancel Button Styling */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: utilities.$main-border;
+  &__title {
+    padding: utilities.$header-padding;
+  }
+  &__button {
+    border-radius: 0.4em;
+    font-size: 1em;
+    color: utilities.$text-color;
+    padding: 0.7em;
+    cursor: utilities.$button-cursor;
+  }
+  &__button--add {
+    background-color: utilities.$add-button-color;
+  }
+  &__button--cancel {
+    background-color: utilities.$secondary-button-color;
+  }
+  &__container {
+    display: flex;
+    list-style: none;
+  }
+  &__container--add-inner {
+    padding: 1.3rem 0.4rem 1rem 1rem;
+  }
+  &__container--cancel-inner {
+    padding: 1.28rem 1rem 1rem 0;
+  }
+}
+
+/* Styling For Form And Input Fields */
+
+.product_form {
+  width: utilities.$form-width;
+  margin-top: 2rem;
+  &__main-field {
+    white-space: nowrap;
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+  }
+  &__input {
+    font-size: utilities.$input-font-size;
+    height: utilities.$input-height;
+    border: utilities.$input-border;
+  }
+  &__input--sku {
+    margin-left: 2.6rem;
+  }
+  &__input--name {
+    margin-left: 2.2rem;
+  }
+  &__input--price {
+    margin-left: 1rem;
+  }
+}
+
+/* Styling For DropDown Toggle */
+
+.dropdown {
+  &__title {
+    font-size: 1.3rem;
+  }
+  &__select {
+    margin-left: 1rem;
+    border: utilities.$input-border;
+    font-size: utilities.$input-font-size;
+    height: utilities.$input-height;
+  }
+}
+
+/* Styling For DropDown Menu Input Menu */
+
+.dropdown_input {
+  &__element {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  &__input {
+    font-size: utilities.$input-font-size;
+    border: utilities.$input-border;
+    margin-left: utilities.$input-margin-left;
+  }
+  &__input--furniture-1 {
+    margin-left: utilities.$input-margin-left + 0.5;
+  }
+  &__input--furniture-2 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Error Message Styling */
+
+.error_message {
+  color: utilities.$error-message-color;
+  font-weight: bold;
+  margin-top: 0.3rem;
+}
+
+/* Footer Styling */
+
+.footer {
+  width: 80%;
+  position: fixed;
+  bottom: 0;
+  flex-shrink: 0;
+  padding: utilities.$footer-padding;
+  border-top: utilities.$footer-border;
+  text-align: center;
+  &__heading {
+    font-weight: lighter;
+  }
+}

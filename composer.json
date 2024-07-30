@@ -1,0 +1,18 @@
+{
+    "name": "rudolfssau/typescripttest",
+    "autoload": {
+        "psr-4": {
+            "Main\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rudolfssau",
+            "email": "rudolfs@saukums.com"
+        }
+    ],
+    "require": {
+      "ext-pdo": "*",
+        "psr/container": "^2.0"
+    }
+}

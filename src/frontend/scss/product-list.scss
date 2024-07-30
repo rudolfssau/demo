@@ -1,0 +1,110 @@
+// Utility import
+
+@use "utilities";
+
+/* Styling Reset For Whole Site */
+
+:root {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Whole Body Reset */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  width: 80%;
+  margin: auto;
+}
+
+/* Styling For Header And Add/Mass-Delete Button */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: utilities.$main-border;
+  &__title {
+    padding: utilities.$header-padding;
+  }
+  &__button {
+    border-radius: 0.4em;
+    font-size: 1em;
+    color: utilities.$text-color;
+    padding: 0.7em;
+    cursor: utilities.$button-cursor;
+  }
+  &__button--add {
+    background-color: utilities.$add-button-color;
+  }
+  &__button--delete {
+    background-color: utilities.$secondary-button-color;
+  }
+  &__container {
+    display: flex;
+    list-style: none;
+  }
+  &__container--add-inner {
+    padding: 1.3rem 0.4rem 1rem 1rem;
+  }
+  &__container--delete-inner {
+    padding: 1.28rem 1rem 1rem 0;
+  }
+}
+
+/* Content Container/Element Styling */
+
+.content {
+  flex: 1 0 auto;
+  height: utilities.$content-height;
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  &__container--inner {
+    margin: 1.3rem 0.5rem 0 0.5rem;
+    width: utilities.$table-width;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: utilities.$table-border;
+    padding: utilities.$table-padding;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  &__element {
+    padding: utilities.$table-padding;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  &__element--delete-checkbox {
+    padding: 0.5em;
+  }
+  &__element--mixed {
+    padding-bottom: 3rem;
+  }
+}
+
+/* Styling For Footer */
+
+.footer {
+  width: 80%;
+  position: fixed;
+  bottom: 0;
+  flex-shrink: 0;
+  padding: utilities.$footer-padding;
+  border-top: utilities.$footer-border;
+  text-align: center;
+  &__heading {
+    font-weight: lighter;
+  }
+}

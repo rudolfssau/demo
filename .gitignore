@@ -1,0 +1,29 @@
+# node_modules
+node_modules/
+
+# MySQL Config Files
+docker/mysql/*
+
+# Include MySQL Schema Dump
+!/docker/mysql/main_2024-06-20.sql
+
+# public/dist Proccesed Files
+public/dist/
+
+# Vendor Folder
+vendor/
+
+# CSS Files
+public/css/*
+
+# Keep CSS Folder:
+!public/css/.gitkeep
+
+# Production Files
+.DS_Store
+.idea/
+
+# Ignore ALL .log Files
+*.log
+
+
