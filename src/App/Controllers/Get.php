@@ -15,7 +15,7 @@ class Get extends Controller
     }
 
     /**
-     * Creates a new object and using getter, gets all the data and passes it into a json format over to Ajax.
+     * Creates a new object and passes it into a json format over to Ajax.
      *
      * @return array
      */

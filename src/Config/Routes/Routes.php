@@ -24,7 +24,7 @@ return [
     [
         'path' => '/check/check',
         'controller' => 'Check',
-        'methods' => ['GET']
+        'methods' => ['POST']
     ],
     [
         'path' => '/add-product',

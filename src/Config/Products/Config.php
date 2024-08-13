@@ -4,37 +4,25 @@
  * Config file for Product and Attribute method allocation.
  * To add new either a new product/attribute, follow the pattern:
  *
- * attributeName has to be based on the attribute value fetched from the frontend.
- *
  * @return array{
- *  switcher: array{
+ *  product_type: array{
  *      class: string,
- *      attributes: array{
- *          attributeName: string
- *      }
+ *      attribute: string
  *  }
  * }
  *
  */
 return [
     "dvd" => [
-        "class" => "Main\App\Models\Domain\Entity\Dvd",
-        "attributes" => [
-            "sizemb" => "Main\App\Models\Domain\Entity\Attributes\SizeMB"
-        ]
+        "class" => Main\App\Models\Domain\Entity\Dvd::class,
+        "attribute" => Main\App\Models\Domain\Entity\Attributes\Size::class
     ],
     "book" => [
-        "class" => "Main\App\Models\Domain\Entity\Book",
-        "attributes" => [
-            "weightkg" => "Main\App\Models\Domain\Entity\Attributes\Weight"
-        ]
+        "class" => Main\App\Models\Domain\Entity\Book::class,
+        "attribute" => Main\App\Models\Domain\Entity\Attributes\Weight::class
     ],
     "furniture" => [
-        "class" => "Main\App\Models\Domain\Entity\Furniture",
-        "attributes" => [
-            "heightcm" => "Main\App\Models\Domain\Entity\Attributes\Height",
-            "widthcm" => "Main\App\Models\Domain\Entity\Attributes\Width",
-            "lengthcm" => "Main\App\Models\Domain\Entity\Attributes\Length"
-        ]
+        "class" => Main\App\Models\Domain\Entity\Furniture::class,
+        "attribute" => Main\App\Models\Domain\Entity\Attributes\Dimensions::class
     ]
 ];

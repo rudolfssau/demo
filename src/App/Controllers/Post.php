@@ -19,16 +19,17 @@ class Post extends Controller
      * @param ProductFactory $productFactory
      */
     public function __construct (
-        protected readonly ProductRepositoryInterface $productRepository,
-        protected readonly AttributeRepositoryInterface $attributeRepository,
+        protected ProductRepositoryInterface $productRepository,
+        protected AttributeRepositoryInterface $attributeRepository,
         protected readonly Connection $connection,
-        protected ProductFactory $productFactory,
+        protected ProductFactory $productFactory
     )
     {
     }
 
     /**
-     * Insert object data into database. Parameters that get passed into Product.php are the main-mandatory fields.
+     * Insert object data into database.
+     * Product and Attribute insertion gets handled separately.
      *
      * @return void
      * @throws Exception
@@ -38,12 +39,12 @@ class Post extends Controller
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
         $product = $this->productFactory->build(
-            $this->productRepository,
             $data[ProductEntityInterface::SKU],
             $data[ProductEntityInterface::NAME],
             $data[ProductEntityInterface::PRICE],
             $data[ProductEntityInterface::PRODUCT_TYPE],
-            $data[ProductEntityInterface::ATTRIBUTES]
+            $data[ProductEntityInterface::ATTRIBUTES],
+            $this->productRepository
         );
 
         /**
@@ -54,7 +55,7 @@ class Post extends Controller
         /**
          * Save product attributes
          */
-        foreach ($product->getAttributes() as $attributeName => $attributeValue)
+        foreach ($product->attributes as $attributeName => $attributeValue)
         {
             $this->attributeRepository->save($productInsert, [new EavAttributes($attributeName, $attributeValue)]);
         }

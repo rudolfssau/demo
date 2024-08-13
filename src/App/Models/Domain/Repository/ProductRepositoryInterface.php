@@ -3,6 +3,7 @@
 namespace Main\App\Models\Domain\Repository;
 
 use Main\App\Models\Domain\Entity\AbstractProduct;
+use Main\App\Models\Domain\Entity\Product;
 use Main\App\Models\Domain\Entity\ProductFactory;
 
 /**
@@ -13,10 +14,10 @@ interface ProductRepositoryInterface
     /**
      * Save method definition.
      *
-     * @param $product
-     * @return void
+     * @param Product $product
+     * @return string|false
      */
-    public function save(AbstractProduct $product): string|false;
+    public function save(Product $product): string|false;
 
     /**
      * Delete method definition.

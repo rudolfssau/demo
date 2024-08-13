@@ -50,7 +50,7 @@ export default defineComponent({
       this.$data.fields[this.select].show = 'block';
     },
     fetchSKUFromDB: async function() {
-       await axios.get('/check/check')
+       await axios.post('/check/check', this.sku)
           .then((response) => {
             this.skuArray = (response.data);
           });

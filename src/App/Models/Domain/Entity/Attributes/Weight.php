@@ -3,38 +3,38 @@
 namespace Main\App\Models\Domain\Entity\Attributes;
 
 use Exception;
-use Main\App\Models\Domain\Interface\IsAttribute;
 
-class Weight implements IsAttribute
+class Weight extends ProductAttribute
 {
     /**
-     * Defined key for attribute.
-     */
-    const attributeCode = "weightkg";
-
-    /**
-     * @var array
-     */
-    private array $value = [];
-
-    /**
-     * @param string $value
-     * @return void
+     * @param float $kilograms
      * @throws Exception
      */
-    public function setValue(string $value): void
+    public function __construct(protected float $kilograms)
     {
-        if (!isset($value) || !is_numeric($value)) {
-            throw new Exception("Error setting Weight KG attribute.");
-        }
-        $this->value[self::attributeCode] = $value;
+        $this->setMegabytes($this->kilograms);
     }
 
     /**
-     * @return mixed
+     * @param float $kilograms
+     * @return void
+     * @throws Exception
      */
-    public function getValue(): array
+    public function setMegabytes(float $kilograms): void
     {
-        return $this->value;
+        if (!isset($kilograms) || !is_numeric($kilograms)) {
+            throw new Exception("Error setting Size MB attribute.");
+        }
+        $this->kilograms = $kilograms;
+    }
+
+    /**
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'weightkg' => $this->kilograms
+        ];
     }
 }

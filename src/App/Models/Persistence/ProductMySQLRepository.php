@@ -3,7 +3,7 @@
 namespace Main\App\Models\Persistence;
 
 use Main\App\Database\Connection;
-use Main\App\Models\Domain\Entity\AbstractProduct;
+use Main\App\Models\Domain\Entity\Product;
 use Main\App\Models\Domain\Repository\ProductRepositoryInterface;
 use PDO;
 
@@ -19,14 +19,12 @@ class ProductMySQLRepository implements ProductRepositoryInterface
     /**
      * Main product data insertion.
      *
-     * @param AbstractProduct $product
+     * @param Product $product
      * @return string|false
      */
-    public function save(AbstractProduct $product): string|false
+    public function save(Product $product): string|false
     {
         $pdo = $this->connection->connect();
-
-        print_r($product->getAttributes());
 
         $statement = $pdo->prepare("
         INSERT INTO products (
@@ -38,14 +36,14 @@ class ProductMySQLRepository implements ProductRepositoryInterface
                 :sku,
                 :name,
                 :price,
-                :product_type
+                :productType
             )
         ");
         $statement->execute([
-            ':sku' => $product->getSku(),
-            ':name' => $product->getName(),
-            ':price' => $product->getPrice(),
-            ':product_type' => $product->getProductType(),
+            ':sku' => $product->sku,
+            ':name' => $product->name,
+            ':price' => $product->price,
+            ':productType' => $product->productType,
         ]);
 
         return $pdo->lastInsertId();
@@ -78,6 +76,7 @@ class ProductMySQLRepository implements ProductRepositoryInterface
         $statement->bindParam(':sku', $sku);
         $statement->execute();
         $values = $statement->fetch(PDO::FETCH_ASSOC);
+
         return $values['count'];
     }
 }

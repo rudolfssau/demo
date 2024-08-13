@@ -26,10 +26,10 @@ class Delete extends Controller
     {
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body, true);
-        foreach ($data["id"] as $key => $attributeId)
+        foreach ($data["id"] as $productId)
         {
-            $this->attributeRepository->delete($attributeId);
-            $this->productRepository->delete($attributeId);
+            $this->attributeRepository->delete($productId);
+            $this->productRepository->delete($productId);
         }
     }
 }

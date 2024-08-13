@@ -6,34 +6,36 @@ namespace Main\Core;
 
 use ArgumentCountError;
 use ErrorException;
+use Exception;
 
 class Error
 {
     /**
      * Used to handle error messages, etc.
      *
-     * @param $errno
-     * @param $errstr
-     * @param $errfile
-     * @param $errline
+     * @param int $errno
+     * @param string $errstr
+     * @param string $errfile
+     * @param int|null $errline
      * @return void
      * @throws ErrorException
      */
-    public static function errorHandler($errno, $errstr, $errfile, $errline): void
+    public static function errorHandler(int $errno, string $errstr, string $errfile, int|null $errline): void
     {
         if (error_reporting() !== 0) {
             http_response_code(500);
             throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
         }
     }
+
     /**
      * When an exception is thrown, it gets logged to the log folder.
      * The exception message gets specified messages, stack traces, etc.
      *
-     * @param $exception
+     * @param Exception $exception
      * @return void
      */
-    public static function exceptionHandler($exception): void
+    public static function exceptionHandler(Exception $exception): void
     {
         $code = $exception->getCode();
         if ($code != 404) {

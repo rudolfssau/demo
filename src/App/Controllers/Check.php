@@ -24,7 +24,10 @@ class Check extends Controller
     public function __invoke(): array
     {
         header('Content-Type: application/json');
-        $pdo = $this->connection->connect()->prepare('SELECT product_sku FROM products');
+        $request_body = file_get_contents('php://input');
+        $sku = json_decode($request_body, true);
+        $pdo = $this->connection->connect()->prepare('SELECT product_sku FROM products WHERE product_sku = :sku');
+        $pdo->bindParam(':sku', $sku);
         $pdo->execute();
 
         return $pdo->fetchall(PDO::FETCH_ASSOC) ?: [];
